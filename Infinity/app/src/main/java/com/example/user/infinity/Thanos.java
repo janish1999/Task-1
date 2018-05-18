@@ -39,7 +39,7 @@ public class Thanos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.thanos);
         final RelativeLayout layout = (RelativeLayout) findViewById(R.id.layout);
-        Button button = (Button) findViewById(R.id.button);
+        final Button button = (Button) findViewById(R.id.button);
         Button button2 = (Button) findViewById(R.id.button2);
         final TextView textView = (TextView) findViewById(R.id.textView);
         gem = new ArrayList<String>();
@@ -130,6 +130,7 @@ public class Thanos extends AppCompatActivity {
                     index++;
                     editor.putInt("index", index).apply();
                     if (index >= 6) {
+                        button.setEnabled(false);
 
                         new CountDownTimer(500, 1000) {
                             public void onFinish() {
@@ -153,6 +154,7 @@ public class Thanos extends AppCompatActivity {
                                 editor.putString("order", build.toString()).apply();
                                 index = 0;
                                 editor.putInt("index", index).apply();
+                                button.setEnabled(true);
                             }
 
                             @Override
